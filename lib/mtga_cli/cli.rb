@@ -1,5 +1,7 @@
 require 'gli'
+require 'mtga_cli'
 require 'mtga_cli/cli/global_options'
+require 'mtga_cli/cli/command_db'
 
 module MtgaCli
   module Cli
@@ -12,7 +14,7 @@ module MtgaCli
     subcommand_option_handling :normal
     arguments :strict
 
-    config_file File.join(ENV['HOME'], '.config', 'mtga_cli.conf')
+    config_file File.join(MtgaCli.conf_dir, 'mtga_cli.conf')
 
     global_options(self)
 
@@ -21,7 +23,7 @@ module MtgaCli
       true
     end
 
-    #command_db(self)
+    command_db(self)
     #command_update(self)
     #command_collection(self)
   end
