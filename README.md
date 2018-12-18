@@ -16,12 +16,12 @@ Checkout this source code repository and run bundler to install all the gems:
 
 Execute the application with bundler:
 
-    $ bundle exec mtga_cli --help
+    $ bundle exec mtga-cli --help
 
 First you have to import the scryfall card database:
 
     $ wget https://archive.scryfall.com/json/scryfall-default-cards.json
-    $ bundle exec mtga_cli db import ./scryfall-default-cards.json
+    $ bundle exec mtga-cli db import ./scryfall-default-cards.json
 
 Then update your collection:
 
