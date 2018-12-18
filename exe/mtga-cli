@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'mtga_cli/cli'
+exit MtgaCli::Cli.run(ARGV)
