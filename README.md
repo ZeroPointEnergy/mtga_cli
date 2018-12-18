@@ -25,7 +25,7 @@ First you have to import the scryfall card database:
 
 Then update your collection:
 
-    $ bundle exec mtga_cli collection update ~/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/output_log.txt
+    $ bundle exec mtga-cli collection update ~/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/output_log.txt
 
 Now you can print the summary:
 
