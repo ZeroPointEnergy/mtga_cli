@@ -24,6 +24,17 @@ module MtgaCli
             end
           end
 
+          c.desc 'Show the history of changed cards between collection updates'
+          c.command :history do |sc|
+            sc.desc 'Show the history N updates back'
+            sc.default_value 10
+            sc.arg_name 'N'
+            sc.flag [:n]
+
+            sc.action do |global_options,options,args|
+              MtgaCli.collection_store.history(options[:n].to_i)
+            end
+          end
         end
       end
     end

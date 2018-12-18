@@ -36,5 +36,18 @@ module MtgaCli
         Collection.new(timestamp, self[:collection][timestamp])
       end
     end
+
+    def timestamps
+      transaction do
+        self[:collection].keys.sort.reverse
+      end
+    end
+
+    def history(n)
+      timestamps.take(n).each_cons(2) do |new, old|
+        diff_coll = collection(new) - collection(old)
+        diff_coll.diff_cards
+      end
+    end
   end
 end
