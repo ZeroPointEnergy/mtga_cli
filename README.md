@@ -1,43 +1,71 @@
-# MtgaCli
+# MTGA CLI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mtga_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
+This is a small ruby CLI application to print some stats about the Magic the Gathering: Arena card collection.
 
-TODO: Delete this and the text above, and describe your gem
+This is very basic and was developed and tested on Linux only so far. This only shows some rudementary stats and nothing fancy so far.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Checkout this source code repository and run bundler to install all the gems:
 
-```ruby
-gem 'mtga_cli'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install mtga_cli
+    git clone https:://github.com/ZeroPointEnergy/mtga_cli.git
+    cd mtga_cli
+    bundle install --path .bundle
 
 ## Usage
 
-TODO: Write usage instructions here
+Execute the application with bundler:
 
-## Development
+    $ bundle exec mtga_cli --help
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+First you have to import the scryfall card database:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    $ wget https://archive.scryfall.com/json/scryfall-default-cards.json
+    $ bundle exec mtga_cli db import ./scryfall-default-cards.json
 
-## Contributing
+Then update your collection:
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mtga_cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+    $ bundle exec mtga_cli collection update ~/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/output_log.txt
+
+Now you can print the summary:
+
+    $ bundle exec exe/mtga-cli collection summary
+
+    Set 'Guilds of Ravnica' (grn)
+    Overall: 601/1092 complete: 55.04
+      - Common 316/472 complete: 66.95
+      - Uncommon 205/328 complete: 62.50
+      - Rare 66/220 complete: 30.00
+      - Mythic 14/72 complete: 19.44
+
+    Set 'Core Set 2019' (m19)
+    Overall: 558/1256 complete: 44.43
+      - Common 267/572 complete: 46.68
+      - Uncommon 211/344 complete: 61.34
+      - Rare 70/252 complete: 27.78
+      - Mythic 10/88 complete: 11.36
+
+    Set 'Dominaria' (dom)
+    Overall: 462/1120 complete: 41.25
+      - Common 220/500 complete: 44.00
+      - Uncommon 169/328 complete: 51.52
+      - Rare 56/224 complete: 25.00
+      - Mythic 17/68 complete: 25.00
+
+    Set 'Rivals of Ixalan' (rix)
+    Overall: 267/820 complete: 32.56
+      - Common 105/312 complete: 33.65
+      - Uncommon 112/248 complete: 45.16
+      - Rare 38/200 complete: 19.00
+      - Mythic 12/60 complete: 20.00
+
+    Set 'Ixalan' (xln)
+    Overall: 244/1156 complete: 21.11
+      - Common 79/500 complete: 15.80
+      - Uncommon 117/328 complete: 35.67
+      - Rare 40/260 complete: 15.38
+      - Mythic 8/68 complete: 11.76 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the MtgaCli project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/mtga_cli/blob/master/CODE_OF_CONDUCT.md).
+The gem is available as open source under the terms of the GPL v3.
