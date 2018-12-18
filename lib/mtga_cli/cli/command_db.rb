@@ -13,7 +13,7 @@ module MtgaCli
             sc.action do |global_options,options,args|
               help_now!('Please specify a json data file to import') if args.empty?
               json_file = args[0]
-              MtgaCli::Db.new.import(json_file)
+              MtgaCli.card_db.import(json_file)
             end
           end
         end

@@ -2,6 +2,7 @@ require 'gli'
 require 'mtga_cli'
 require 'mtga_cli/cli/global_options'
 require 'mtga_cli/cli/command_db'
+require 'mtga_cli/cli/command_collection'
 
 module MtgaCli
   module Cli
@@ -24,7 +25,6 @@ module MtgaCli
     end
 
     command_db(self)
-    #command_update(self)
-    #command_collection(self)
+    command_collection(self)
   end
 end
