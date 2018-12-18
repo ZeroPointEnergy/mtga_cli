@@ -16,6 +16,14 @@ module MtgaCli
               MtgaCli.collection_store.new_entry(output_log)
             end
           end
+
+          c.desc 'Show a summary of the current collection'
+          c.command :summary do |sc|
+            sc.action do |global_options,options,args|
+              MtgaCli.collection_store.collection.summary
+            end
+          end
+
         end
       end
     end

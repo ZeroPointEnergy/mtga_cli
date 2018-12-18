@@ -2,6 +2,8 @@ require 'mtga_cli/version'
 require 'mtga_cli/config'
 require 'mtga_cli/db'
 require 'mtga_cli/collection_store'
+require 'mtga_cli/card'
+require 'mtga_cli/card_set'
 require 'mtga_cli/collection'
 
 module MtgaCli
