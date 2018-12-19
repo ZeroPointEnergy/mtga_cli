@@ -3,6 +3,7 @@ require 'mtga_cli'
 require 'mtga_cli/cli/global_options'
 require 'mtga_cli/cli/command_db'
 require 'mtga_cli/cli/command_collection'
+require 'mtga_cli/cli/command_inventory'
 
 module MtgaCli
   module Cli
@@ -26,5 +27,6 @@ module MtgaCli
 
     command_db(self)
     command_collection(self)
+    command_inventory(self)
   end
 end
