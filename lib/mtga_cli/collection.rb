@@ -13,12 +13,12 @@ module MtgaCli
     def summary
       @sets.each do |set|
         puts "Set '#{set.name}' (#{set.code})"
-        puts "Overall: #{set.collected}/#{set.count} complete: #{'%.02f' % set.percentage}"
+        puts "Overall: #{set.collected}/#{set.count} complete: #{'%.02f' % set.percentage}%"
         ['common', 'uncommon', 'rare', 'mythic'].each do |rarity|
           collected = set.collected_by_rarity(rarity)
           count = set.count_by_rarity(rarity)
           percentage = set.percentage_by_rarity(rarity)
-          puts "  - #{rarity.capitalize} #{collected}/#{count} complete: #{'%.02f' % percentage}"
+          puts "  - #{rarity.capitalize} #{collected}/#{count} complete: #{'%.02f' % percentage}%"
         end
         puts
       end
