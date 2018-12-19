@@ -32,7 +32,7 @@ module MtgaCli
     end
 
     def sets
-      transaction do
+      @sets ||= transaction(true) do
         self[:sets]
       end
     end

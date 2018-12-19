@@ -25,20 +25,20 @@ module MtgaCli
     end
 
     def last_timestamp
-      transaction do
+      transaction(true) do
         self[:last]
       end
     end
 
     def collection(timestamp = nil)
       timestamp ||= last_timestamp
-      transaction do
+      transaction(true) do
         Collection.new(timestamp, self[:collection][timestamp])
       end
     end
 
     def timestamps
-      transaction do
+      transaction(true) do
         self[:collection].keys.sort.reverse
       end
     end
