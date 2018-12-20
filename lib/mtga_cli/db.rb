@@ -8,6 +8,7 @@ require 'json'
 module MtgaCli
   class Db < YAML::Store
     MTGA_SETS = ['xln', 'rix', 'dom', 'm19', 'grn']
+    EXCLUDE_CARDS = ['Forest', 'Mountain', 'Swamp', 'Island', 'Plains']
 
     def initialize
       FileUtils.mkdir_p(MtgaCli.data_dir)
@@ -20,7 +21,9 @@ module MtgaCli
       sets = {}
       import_data.each do |card|
         set = card['set']
+        name = card['name']
         next unless MTGA_SETS.include?(set)
+        next if EXCLUDE_CARDS.include?(name)
 
         sets[set] ||= []
         sets[set] << card
