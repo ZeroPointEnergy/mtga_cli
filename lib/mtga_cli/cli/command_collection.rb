@@ -17,6 +17,17 @@ module MtgaCli
             end
           end
 
+          c.desc 'Show the cards in the collection'
+          c.command :show do |sc|
+            sc.desc 'Only show cards from a specific set'
+            sc.arg_name 'SET'
+            sc.flag [:s, :set]
+
+            sc.action do |global_options,options,args|
+              MtgaCli.collection_store.collection.show(options[:set])
+            end
+          end
+
           c.desc 'Show a summary of the current collection'
           c.command :summary do |sc|
             sc.action do |global_options,options,args|

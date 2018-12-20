@@ -24,6 +24,17 @@ module MtgaCli
       end
     end
 
+    def show(selected_set = nil)
+      @sets.each do |set|
+        next if ( selected_set && ( set.code != selected_set ) )
+        puts "Set '#{set.name}' (#{set.code})"
+        set.cards.each do |card|
+          puts "  - #{card.count}/4 #{card.name} (#{card.rarity})"
+        end
+      end
+    end
+
+
     def diff_cards
       puts @timestamp
       @sets.each do |set|
