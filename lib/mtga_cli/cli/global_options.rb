@@ -10,6 +10,11 @@ module MtgaCli
         desc 'Show stacktrace on crash'
         default_value false
         switch [:trace, :t]
+
+        desc 'Output log file of magic arena'
+        default_value nil
+        arg_name 'OUTPUT_LOG'
+        flag [:output_log, :o]
       end
     end
   end
