@@ -18,6 +18,10 @@ Execute the application with bundler:
 
     $ bundle exec mtga-cli --help
 
+This will configure the application and set the output log location:
+
+    $ bundle exec mtga-cli --output_log ${Home}/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/output_log.txt initconfig
+
 First you have to import the scryfall card database:
 
     $ wget https://archive.scryfall.com/json/scryfall-default-cards.json
@@ -25,46 +29,68 @@ First you have to import the scryfall card database:
 
 Then update your collection:
 
-    $ bundle exec mtga-cli collection update ~/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/output_log.txt
+    $ bundle exec mtga-cli collection update
 
 Now you can print the summary:
 
     $ bundle exec exe/mtga-cli collection summary
 
     Set 'Guilds of Ravnica' (grn)
-    Overall: 601/1092 complete: 55.04
-      - Common 316/472 complete: 66.95
-      - Uncommon 205/328 complete: 62.50
-      - Rare 66/220 complete: 30.00
-      - Mythic 14/72 complete: 19.44
+    Overall: 621/1072 complete: 57.93%
+      - Common 328/452 complete: 72.57%
+      - Uncommon 210/328 complete: 64.02%
+      - Rare 69/220 complete: 31.36%
+      - Mythic 14/72 complete: 19.44%
 
     Set 'Core Set 2019' (m19)
-    Overall: 558/1256 complete: 44.43
-      - Common 267/572 complete: 46.68
-      - Uncommon 211/344 complete: 61.34
-      - Rare 70/252 complete: 27.78
-      - Mythic 10/88 complete: 11.36
+    Overall: 562/1176 complete: 47.79%
+      - Common 267/492 complete: 54.27%
+      - Uncommon 215/344 complete: 62.50%
+      - Rare 70/252 complete: 27.78%
+      - Mythic 10/88 complete: 11.36%
 
     Set 'Dominaria' (dom)
-    Overall: 462/1120 complete: 41.25
-      - Common 220/500 complete: 44.00
-      - Uncommon 169/328 complete: 51.52
-      - Rare 56/224 complete: 25.00
-      - Mythic 17/68 complete: 25.00
+    Overall: 467/1040 complete: 44.90%
+      - Common 221/420 complete: 52.62%
+      - Uncommon 173/328 complete: 52.74%
+      - Rare 56/224 complete: 25.00%
+      - Mythic 17/68 complete: 25.00%
 
     Set 'Rivals of Ixalan' (rix)
-    Overall: 267/820 complete: 32.56
-      - Common 105/312 complete: 33.65
-      - Uncommon 112/248 complete: 45.16
-      - Rare 38/200 complete: 19.00
-      - Mythic 12/60 complete: 20.00
+    Overall: 273/800 complete: 34.12%
+      - Common 105/292 complete: 35.96%
+      - Uncommon 116/248 complete: 46.77%
+      - Rare 40/200 complete: 20.00%
+      - Mythic 12/60 complete: 20.00%
 
     Set 'Ixalan' (xln)
-    Overall: 244/1156 complete: 21.11
-      - Common 79/500 complete: 15.80
-      - Uncommon 117/328 complete: 35.67
-      - Rare 40/260 complete: 15.38
-      - Mythic 8/68 complete: 11.76 
+    Overall: 301/1076 complete: 27.97%
+      - Common 113/420 complete: 26.90%
+      - Uncommon 134/328 complete: 40.85%
+      - Rare 46/260 complete: 17.69%
+      - Mythic 8/68 complete: 11.76%
+
+Or the history of new cards in the collection between updates:
+
+    $ bundle exec exe/mtga-cli collection history -n 1
+
+    2018-12-20 01:27:46 +0100 => 2018-12-21 17:28:57 +0100
+      Set 'Guilds of Ravnica' (grn)
+        +1 Hellkite Whelp (uncommon)
+      Set 'Ixalan' (xln)
+        +1 Waker of the Wilds (rare)
+        +1 River Heralds' Boon (common)
+        +1 Ixalli's Keeper (common)
+        +1 Sun-Crowned Hunters (common)
+        +1 Demolish (common)
+        +1 Deathless Ancient (uncommon)
+        +1 Storm Sculptor (common)
+        +1 Run Aground (common)
+        +1 Prosperous Pirates (common)
+        +1 Fleet Swallower (rare)
+        +1 Steadfast Armasaur (uncommon)
+        +1 Looming Altisaur (common)
+        +1 Bishop's Soldier (common)
 
 ## License
 
