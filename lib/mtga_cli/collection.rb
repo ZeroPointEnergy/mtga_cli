@@ -48,13 +48,13 @@ module MtgaCli
     end
 
     def -(other_collection)
-      result = {}
+      diff_data = {}
       @data.each do |id, count|
         diff_count = count - (other_collection.data[id] || 0)
-        result[id] = diff_count if diff_count > 0
+        diff_data[id] = diff_count if diff_count > 0
       end
       diff_stamp = "#{other_collection.timestamp} => #{@timestamp}"
-      Collection.new(diff_stamp, result)
+      Collection.new(diff_stamp, diff_data)
     end
 
   private
