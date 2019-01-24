@@ -28,9 +28,13 @@ module MtgaCli
       @sets.each do |set|
         next if ( selected_set && ( set.code != selected_set ) )
         puts "Set '#{set.name}' (#{set.code})"
-        set.cards.each do |card|
-          puts "  - #{card.count}/4 #{card.name} (#{card.rarity})"
+        ['common', 'uncommon', 'rare', 'mythic'].each do |rarity|
+          puts "- #{rarity.capitalize}:"
+          set.cards_by_rarity(rarity).sort_by{|card| card.count}.reverse.each do |card|
+            puts "  - #{card.count}/4 #{card.name} (#{card.rarity})"
+          end
         end
+        puts
       end
     end
 
