@@ -28,5 +28,9 @@ module MtgaCli
     def rarity
       @data['rarity']
     end
+
+    def type
+      @data['type_line']
+    end
   end
 end

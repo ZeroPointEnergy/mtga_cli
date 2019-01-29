@@ -24,13 +24,14 @@ module MtgaCli
       end
     end
 
-    def show(selected_set = nil)
+    def show(selected_set = nil, type = nil)
       @sets.each do |set|
         next if ( selected_set && ( set.code != selected_set ) )
         puts "Set '#{set.name}' (#{set.code})"
         ['common', 'uncommon', 'rare', 'mythic'].each do |rarity|
           puts "- #{rarity.capitalize}:"
           set.cards_by_rarity(rarity).sort_by{|card| card.count}.reverse.each do |card|
+            next if type and not card.type.include?(type)
             puts "  - #{card.count}/4 #{card.name} (#{card.rarity})"
           end
         end

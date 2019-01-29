@@ -22,8 +22,12 @@ module MtgaCli
             sc.arg_name 'SET'
             sc.flag [:s, :set]
 
+            sc.desc 'Only show cards with the given text in the card type'
+            sc.arg_name 'TYPE'
+            sc.flag [:t, :type]
+
             sc.action do |global_options,options,args|
-              MtgaCli.collection_store.collection.show(options[:set])
+              MtgaCli.collection_store.collection.show(options[:set], options[:type])
             end
           end
 
