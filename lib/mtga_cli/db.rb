@@ -7,7 +7,7 @@ require 'json'
 
 module MtgaCli
   class Db < YAML::Store
-    MTGA_SETS = ['xln', 'rix', 'dom', 'm19', 'grn', 'rna']
+    MTGA_SETS = ['xln', 'rix', 'dom', 'm19', 'grn', 'rna', 'war']
     EXCLUDE_CARDS = ['Forest', 'Mountain', 'Swamp', 'Island', 'Plains']
 
     def initialize
