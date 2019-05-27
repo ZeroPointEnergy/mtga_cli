@@ -14,12 +14,20 @@ module MtgaCli
       @cards.count * 4
     end
 
+    def full_sets
+      @cards.count { |card| card.count >= 4 }
+    end
+
     def collected
       @cards.sum { |card| card.count }
     end
 
     def percentage
       (collected.to_f / count.to_f) * 100.0
+    end
+
+    def full_set_percentage
+      (full_sets.to_f / @cards.count.to_f) * 100.0
     end
 
     def cards_by_rarity(rarity)
@@ -30,12 +38,20 @@ module MtgaCli
       cards_by_rarity(rarity).count * 4
     end
 
+    def full_sets_by_rarity(rarity)
+      cards_by_rarity(rarity).count { |card| card.count >= 4 }
+    end
+
     def collected_by_rarity(rarity)
       cards_by_rarity(rarity).sum { |card| card.count }
     end
 
     def percentage_by_rarity(rarity)
       (collected_by_rarity(rarity).to_f / count_by_rarity(rarity).to_f) * 100.0
+    end
+
+    def full_set_percentage_by_rarity(rarity)
+      (full_sets_by_rarity(rarity).to_f / cards_by_rarity(rarity).count.to_f) * 100.0
     end
 
     private
