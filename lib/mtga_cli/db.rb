@@ -22,6 +22,7 @@ module MtgaCli
       import_data.each do |card|
         set = card['set']
         name = card['name']
+        next unless card['arena_id']
         next unless MTGA_SETS.include?(set)
         next if EXCLUDE_CARDS.include?(name)
 
