@@ -13,17 +13,19 @@ module MtgaCli
     def summary
       @sets.each do |set|
         puts "Set '#{set.name}' (#{set.code})"
-        puts "Overall: #{set.collected}/#{set.count}" +
+        overall = "Overall: #{set.collected}/#{set.count}" +
           " cards: #{'%.02f' % set.percentage}%" +
           " full sets: #{'%.02f' % set.full_set_percentage}"
+        puts MtgaCli::ColorBar.create(overall, set.percentage)
         ['common', 'uncommon', 'rare', 'mythic'].each do |rarity|
           collected = set.collected_by_rarity(rarity)
           count = set.count_by_rarity(rarity)
           percentage = set.percentage_by_rarity(rarity)
           full_set_percentage = set.full_set_percentage_by_rarity(rarity)
-          puts "  - #{rarity.capitalize} #{collected}/#{count}" +
+          line = "- #{rarity.capitalize} #{collected}/#{count}" +
             " cards: #{'%.02f' % percentage}%" +
             " full sets: #{'%.02f' % full_set_percentage}%"
+          puts '  ' + MtgaCli::ColorBar.create(line, percentage)
         end
         puts
       end
