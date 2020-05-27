@@ -23,10 +23,12 @@ module MtgaCli
     end
 
     def percentage
+      return 0.0 if count == 0
       (collected.to_f / count.to_f) * 100.0
     end
 
     def full_set_percentage
+      return 0.0 if @cards.count == 0
       (full_sets.to_f / @cards.count.to_f) * 100.0
     end
 
@@ -47,10 +49,12 @@ module MtgaCli
     end
 
     def percentage_by_rarity(rarity)
+      return 0.0 if count_by_rarity(rarity) == 0
       (collected_by_rarity(rarity).to_f / count_by_rarity(rarity).to_f) * 100.0
     end
 
     def full_set_percentage_by_rarity(rarity)
+      return 0.0 if count_by_rarity(rarity) == 0
       (full_sets_by_rarity(rarity).to_f / cards_by_rarity(rarity).count.to_f) * 100.0
     end
 
