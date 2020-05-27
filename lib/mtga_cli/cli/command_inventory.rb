@@ -9,10 +9,10 @@ module MtgaCli
         desc 'Show user inventory information'
         command :inventory do |c|
           c.action do |global_options,options,args|
-            output_log_file = global_options[:output_log]
-            help_now!('Please specify the path of the output log file') if output_log_file.nil?
-            output_log = OutputLog.new(output_log_file)
-            puts output_log.inventory.to_yaml
+            player_log_file = global_options[:player_log]
+            help_now!('Please specify the path of the player log file') if player_log_file.nil?
+            player_log = PlayerLog.new(player_log_file)
+            puts player_log.inventory.to_yaml
           end
         end
       end

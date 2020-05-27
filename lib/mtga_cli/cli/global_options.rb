@@ -11,10 +11,10 @@ module MtgaCli
         default_value false
         switch [:trace, :t]
 
-        desc 'Output log file of magic arena'
+        desc 'Player log file of magic arena'
         default_value nil
-        arg_name 'OUTPUT_LOG'
-        flag [:output_log, :o]
+        arg_name 'PLAYER_LOG'
+        flag [:player_log, :o]
       end
     end
   end

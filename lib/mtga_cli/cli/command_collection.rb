@@ -10,9 +10,9 @@ module MtgaCli
           c.desc 'Update the collection from the games output log'
           c.command :update do |sc|
             sc.action do |global_options,options,args|
-              output_log = global_options[:output_log]
-              help_now!('Please specify the path of the output log file') if output_log.nil?
-              MtgaCli.collection_store.new_entry(output_log)
+              player_log = global_options[:player_log]
+              help_now!('Please specify the path of the player log file') if player_log.nil?
+              MtgaCli.collection_store.new_entry(player_log)
             end
           end
 

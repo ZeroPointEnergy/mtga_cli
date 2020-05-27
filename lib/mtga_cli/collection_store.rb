@@ -1,5 +1,5 @@
 # MTGA card collection store
-require 'mtga_cli/output_log'
+require 'mtga_cli/player_log'
 require 'yaml/store'
 
 module MtgaCli
@@ -11,11 +11,11 @@ module MtgaCli
       super(db_file)
     end
 
-    def new_entry(output_log_file)
-      output_log = OutputLog.new(output_log_file)
+    def new_entry(player_log_file)
+      player_log = PlayerLog.new(player_log_file)
       timestamp = Time.now
 
-      conv_collection = Hash[output_log.collection.map{|k,v| [k.to_i, v]}]
+      conv_collection = Hash[player_log.collection.map{|k,v| [k.to_i, v]}]
 
       transaction do
         self[:collection] ||= {}
