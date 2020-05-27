@@ -20,11 +20,11 @@ Execute the application with bundler:
 
 This will configure the application and set the output log location:
 
-    $ bundle exec mtga-cli --output_log ${Home}/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/output_log.txt initconfig
+    $ bundle exec mtga-cli --player_log ${Home}/Games/magic-the-gathering-arena/drive_c/users/${USER}/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/Player.log initconfig
 
-First you have to import the scryfall card database:
+First you have to import the scryfall card database from [https://scryfall.com/docs/api/bulk-data]:
 
-    $ wget https://archive.scryfall.com/json/scryfall-default-cards.json
+    $ wget https://archive.scryfall.com/bulk-data/default-cards/default-cards-20200526180435.json
     $ bundle exec mtga-cli db import ./scryfall-default-cards.json
 
 Then update your collection:
