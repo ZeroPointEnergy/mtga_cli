@@ -4,10 +4,14 @@
 require 'yaml/store'
 require 'fileutils'
 require 'json'
+require 'mtga_cli/player_log'
 
 module MtgaCli
   class Db < YAML::Store
-    MTGA_SETS = ['xln', 'rix', 'dom', 'm19', 'grn', 'rna', 'war', 'm20']
+    EXCLUDE_SETS = [
+                     'tdom', 'trix', 'txln', 'thou', 'takh', 'taer', 'tkld', # Tokens
+                     'g18', 'hou', 'akh', 'w17', 'aer', 'kld', 'ogw', # Implemented but unavailable sets
+                   ]
     EXCLUDE_CARDS = ['Forest', 'Mountain', 'Swamp', 'Island', 'Plains']
 
     def initialize
@@ -23,7 +27,7 @@ module MtgaCli
         set = card['set']
         name = card['name']
         next unless card['arena_id']
-        next unless MTGA_SETS.include?(set)
+        next if EXCLUDE_SETS.include?(set)
         next if EXCLUDE_CARDS.include?(name)
 
         sets[set] ||= []
