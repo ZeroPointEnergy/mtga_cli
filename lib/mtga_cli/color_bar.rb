@@ -18,8 +18,8 @@ module MtgaCli
       fg = fg_color(percent)
       bg = bg_color(percent)
 
-      fg_string.colorize(background: fg) +
-        bg_string.colorize(background: bg)
+      fg_string.colorize(background: bg) +
+        bg_string.colorize(background: :light_black)
     end
 
     def self.bg_color(percent)
